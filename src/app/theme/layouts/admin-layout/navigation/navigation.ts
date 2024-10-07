@@ -66,13 +66,13 @@ export const NavigationItems: NavigationItem[] = [
   },
   {
     id: 'utilities',
-    title: 'UI Components',
+    title: 'book management',
     type: 'group',
     icon: 'icon-navigation',
     children: [
       {
         id: 'typography',
-        title: 'Typography',
+        title: 'create',
         type: 'item',
         classes: 'nav-item',
         url: '/typography',
@@ -80,7 +80,7 @@ export const NavigationItems: NavigationItem[] = [
       },
       {
         id: 'color',
-        title: 'Colors',
+        title: 'Edit',
         type: 'item',
         classes: 'nav-item',
         url: '/color',
@@ -88,7 +88,7 @@ export const NavigationItems: NavigationItem[] = [
       },
       {
         id: 'tabler',
-        title: 'Tabler',
+        title: 'delete',
         type: 'item',
         classes: 'nav-item',
         url: 'https://ant.design/components/icon',
@@ -101,7 +101,7 @@ export const NavigationItems: NavigationItem[] = [
 
   {
     id: 'other',
-    title: 'Other',
+    title: 'user management',
     type: 'group',
     icon: 'icon-navigation',
     children: [

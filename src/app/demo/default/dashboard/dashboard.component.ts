@@ -34,50 +34,50 @@ export class DefaultComponent {
     this.iconService.addIcon(...[RiseOutline, FallOutline, SettingOutline, GiftOutline, MessageOutline]);
   }
 
-  recentOrder = tableData;
+  // recentOrder = tableData;
 
-  AnalyticEcommerce = [
-    {
-      title: 'Total Page Views',
-      amount: '4,42,236',
-      background: 'bg-light-primary ',
-      border: 'border-primary',
-      icon: 'rise',
-      percentage: '59.3%',
-      color: 'text-primary',
-      number: '35,000'
-    },
-    {
-      title: 'Total Users',
-      amount: '78,250',
-      background: 'bg-light-primary ',
-      border: 'border-primary',
-      icon: 'rise',
-      percentage: '70.5%',
-      color: 'text-primary',
-      number: '8,900'
-    },
-    {
-      title: 'Total Order',
-      amount: '18,800',
-      background: 'bg-light-warning ',
-      border: 'border-warning',
-      icon: 'fall',
-      percentage: '27.4%',
-      color: 'text-warning',
-      number: '1,943'
-    },
-    {
-      title: 'Total Sales',
-      amount: '$35,078',
-      background: 'bg-light-warning ',
-      border: 'border-warning',
-      icon: 'fall',
-      percentage: '27.4%',
-      color: 'text-warning',
-      number: '$20,395'
-    }
-  ];
+  // AnalyticEcommerce = [
+  //   {
+  //     title: 'Total Page Views',
+  //     amount: '4,42,236',
+  //     background: 'bg-light-primary ',
+  //     border: 'border-primary',
+  //     icon: 'rise',
+  //     percentage: '59.3%',
+  //     color: 'text-primary',
+  //     number: '35,000'
+  //   },
+  //   {
+  //     title: 'Total Users',
+  //     amount: '78,250',
+  //     background: 'bg-light-primary ',
+  //     border: 'border-primary',
+  //     icon: 'rise',
+  //     percentage: '70.5%',
+  //     color: 'text-primary',
+  //     number: '8,900'
+  //   },
+  //   {
+  //     title: 'Total Order',
+  //     amount: '18,800',
+  //     background: 'bg-light-warning ',
+  //     border: 'border-warning',
+  //     icon: 'fall',
+  //     percentage: '27.4%',
+  //     color: 'text-warning',
+  //     number: '1,943'
+  //   },
+  //   {
+  //     title: 'Total Sales',
+  //     amount: '$35,078',
+  //     background: 'bg-light-warning ',
+  //     border: 'border-warning',
+  //     icon: 'fall',
+  //     percentage: '27.4%',
+  //     color: 'text-warning',
+  //     number: '$20,395'
+  //   }
+  // ];
 
   transaction = [
     {
