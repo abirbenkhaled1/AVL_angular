@@ -1,8 +1,7 @@
-// angular import
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Project import
+// Project imports
 import { AdminComponent } from './theme/layouts/admin-layout/admin-layout.component';
 import { GuestComponent } from './theme/layouts/guest/guest.component';
 
@@ -18,7 +17,7 @@ const routes: Routes = [
       },
       {
         path: 'dashboard/default',
-        loadComponent: () => import('./demo/default/dashboard/dashboard.component').then((c) => c.DefaultComponent)
+        loadComponent: () => import('./demo/default/dashboard/dashboard.component').then(c => c.DefaultComponent)
       },
       {
         path: 'typography',
@@ -42,10 +41,7 @@ const routes: Routes = [
         path: 'login',
         loadComponent: () => import('./demo/authentication/login/login.component')
       },
-      {
-        path: 'register',
-        loadComponent: () => import('./demo/authentication/register/register.component')
-      }
+      
     ]
   }
 ];
