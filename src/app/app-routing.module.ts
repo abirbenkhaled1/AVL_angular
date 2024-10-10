@@ -15,6 +15,7 @@ const routes: Routes = [
         redirectTo: '/dashboard/default',
         pathMatch: 'full'
       },
+
       {
         path: 'dashboard/default',
         loadComponent: () => import('./demo/default/dashboard/dashboard.component').then(c => c.DefaultComponent)
@@ -30,17 +31,21 @@ const routes: Routes = [
       {
         path: 'sample-page',
         loadComponent: () => import('./demo/other/sample-page/sample-page.component')
-      }
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./demo/authentication/register/register.component').then(m => m.RegisterComponent)
+      },
     ]
   },
   {
     path: '',
     component: GuestComponent,
     children: [
-      {
-        path: 'login',
-        loadComponent: () => import('./demo/authentication/login/login.component')
-      },
+      // {
+      //   path: 'login',
+      //   loadComponent: () => import('./demo/authentication/login/login.component')
+      // },
       
     ]
   }

@@ -1,17 +1,21 @@
-// angular import
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule,FormsModule], // Add RouterModule here
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrl: './login.component.scss'
 })
-export default class LoginComponent {
-  // public method
-  SignInOptions = [
+export class LoginComponent {
+
+  public username: string = '';
+  public password: string = '';
+
+  SignUpOptions = [
     {
       image: 'assets/images/authentication/google.svg',
       name: 'Google'
@@ -25,4 +29,29 @@ export default class LoginComponent {
       name: 'Facebook'
     }
   ];
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login() {
+    const userLoginRecord = {
+      username: this.username,
+      password: this.password
+    };
+    console.log("------------------------")
+      console.log(userLoginRecord)
+      console.log("------------------------")
+
+    this.authService.login(userLoginRecord).subscribe({
+      next: (response) => {
+        console.log('login successful', response);
+        // Navigate to login page or show a success message
+        this.router.navigate(['/home']);
+      },
+      error: (error) => {
+        console.error('Registration failed', error);
+        // Handle the error as needed (e.g., show an error message)
+      }
+    });
+  }
 }
+

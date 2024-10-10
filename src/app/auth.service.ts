@@ -6,9 +6,13 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private baseUrl = 'https://a163-197-16-180-176.ngrok-free.app/auth'; // Replace with your actual API URL
+  private baseUrl = 'https://34b3-197-20-151-85.ngrok-free.app/auth'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
+
+  login(user: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/login`, user);
+  }
 
   register(user: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, user);
