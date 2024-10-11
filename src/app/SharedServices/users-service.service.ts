@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -15,14 +15,19 @@ export class UsersService {
 
     this.Token =localStorage.getItem('token')
     console.log(this.Token+"------------")
-    // const requestBody = {
-    //   token: this.Token
-    // };
-    const params = new HttpParams().set('token', this.Token);
 
+    const body = { token: this.Token };
+
+
+    const params = new HttpParams().set('token', this.Token);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    console.log("------------")
+    console.log(body.token)
 
     // @ts-ignore
-    return this.http.get(`${this.baseUrl}/getUsers`, {},{ params });
+    return this.http.get(`${this.baseUrl}/getUsers`, { headers: headers, params: params });
 
   }
 
