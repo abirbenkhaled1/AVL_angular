@@ -37,13 +37,22 @@ export class LoginComponent {
       username: this.username,
       password: this.password
     };
-    console.log("------------------------")
-      console.log(userLoginRecord)
-      console.log("------------------------")
+
 
     this.authService.login(userLoginRecord).subscribe({
       next: (response) => {
         console.log('login successful', response);
+
+
+        const token = response.token;
+
+        console.log("------------------------")
+        console.log(this.username)
+        console.log(token)
+        console.log("------------------------")
+        // Save username and token to local storage
+        localStorage.setItem('username', this.username);
+        localStorage.setItem('token', token);
         // Navigate to login page or show a success message
         this.router.navigate(['/home']);
       },
