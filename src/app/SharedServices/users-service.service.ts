@@ -14,17 +14,13 @@ export class UsersService {
   getAllUsers(): Observable<any> {
 
     this.Token =localStorage.getItem('token')
-    console.log(this.Token+"------------")
-
-    const body = { token: this.Token };
 
 
     const params = new HttpParams().set('token', this.Token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    console.log("------------")
-    console.log(body.token)
+
 
     // @ts-ignore
     return this.http.get(`${this.baseUrl}/getUsers`, { headers: headers, params: params });
