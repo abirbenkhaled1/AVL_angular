@@ -1,118 +1,69 @@
-<div class="row">
-  <!-- @for (analytic of AnalyticEcommerce; track analytic) {
-    <div class="col-md-6 col-xl-3">
-      <app-card [showHeader]="false" blockClass="dashboard-card">
-        <h6 class="mb-2 f-w-400 text-muted">{{ analytic.title }}</h6>
-        <h4 class="mb-3">
-          {{ analytic.amount }}
-          <span class="badge {{ analytic.background }} border {{ analytic.border }} ">
-            <i antIcon type="{{ analytic.icon }}" theme="outline"></i>
-            {{ analytic.percentage }}
-          </span>
-        </h4>
-        <p class="mb-0 text-muted text-sm">
-          You made an extra
-          <span class="{{ analytic.color }}">{{ analytic.number }}</span>
-          this year
-        </p>
-      </app-card>
-    </div>
-  }
-  <div class="col-md-12 col-xl-8">
-    <app-monthly-bar-chart />
-  </div>
-  <div class="col-md-12 col-xl-4">
-    <app-income-overview-chart />
-  </div>
-
-  <div class="col-md-12 col-xl-8">
-    <h5 class="mb-3">Recent Orders</h5>
-    <div class="card tbl-card">
-      <div class="table-responsive">
-        <table class="table table-hover mb-0">
-          <thead>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA=" crossorigin="anonymous" />
+<div class="container mt-3 mb-4">
+  <div class="col-lg-9 mt-4 mt-lg-0">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+          <table class="table manage-candidates-top mb-0">
+            <thead>
             <tr>
-              <th>TRACKING NO.</th>
-              <th>PRODUCT NAME</th>
-              <th>STATUS</th>
-              <th class="text-end">TOTAL ORDER</th>
-              <th class="text-end">TOTAL AMOUNT</th>
+              <th>Candidate Name</th>
+              <th class="text-center">Status</th>
+              <th class="action text-right">Action</th>
             </tr>
-          </thead>
-          <tbody>
-            @for (order of recentOrder; track order) {
-              <tr>
-                <td>
-                  <a href="javascript:" class="text-muted">{{ order.id }}</a>
-                </td>
-                <td>{{ order.name }}</td>
-                <td>
-                  <span class="d-block">
-                    <i class="badge-circle {{ order.status_type }} f-10 m-r-5"></i>
-                    {{ order.status }}
-                  </span>
-                </td>
-                <td class="text-end">{{ order.quantity }}</td>
-                <td class="text-end">{{ order.amount }}</td>
-              </tr>
-            }
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-12 col-xl-4">
-    <app-analytics-chart />
-  </div>
+            </thead>
+            <tbody>
 
-  <div class="col-md-12 col-xl-8">
-    <app-sales-report-chart />
-  </div> -->
-  <!-- <div class="col-md-12 col-xl-4">
-    <h5 class="mb-3">Transaction History</h5>
-    <div class="card">
-      <div class="list-group list-group-flush">
-        @for (history of transaction; track history) {
-          <a href="javascript:" class="list-group-item list-group-item-action px-3">
-            <div class="d-flex">
-              <div class="flex-shrink-0">
-                <div class="avatar avatar-s rounded-circle {{ history.background }}">
-                  <i class="f-16" antIcon type="{{ history.icon }}" theme="outline"></i>
+            <tr  *ngFor="let user of users" class="candidates-list">
+              <td class="title">
+                <div class="thumb">
+                  <img class="img-fluid" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="">
                 </div>
-              </div>
-              <div class="flex-grow-1 ms-3">
-                <h6 class="mb-1">{{ history.title }}</h6>
-                <p class="mb-0 text-muted">{{ history.time }}</p>
-              </div>
-              <div class="flex-shrink-0 text-end">
-                <h6 class="mb-1">{{ history.amount }}</h6>
-                <p class="mb-0 text-muted">{{ history.percentage }}</p>
-              </div>
-            </div>
-          </a>
-        }
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <div class="row justify-content-between">
-          <div class="col-auto">
-            <h5>Help & Support Chat</h5>
-            <p class="mb-3">Typical replay within 5 min</p>
-          </div>
-          <div class="col-auto">
-            <div class="user-group mb-3">
-              <img src="assets/images/user/avatar-1.jpg" alt="image" />
-              <img src="assets/images/user/avatar-2.jpg" alt="image" />
-              <img src="assets/images/user/avatar-3.jpg" alt="image" />
-            </div>
+                <div class="candidate-list-details">
+                  <div class="candidate-list-info">
+                    <div class="candidate-list-title">
+                      <h5 class="mb-0"><a href="#">{{ user.username }}</a></h5>
+                    </div>
+                    <div class="candidate-list-option">
+                      <ul class="list-unstyled">
+                        <li><i class="fas fa-filter pr-1"></i>{{ user.firstName }}</li>
+                        <li><i class="fas fa-map-marker-alt pr-1"></i>{{ user.lastName }}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="candidate-list-favourite-time text-center">
+                <a class="candidate-list-favourite order-2 text-danger" href="#"></a>
+                <span *ngIf="user.emailVerified" class="candidate-list-time order-1">Verified</span>
+                <span *ngIf="!user.emailVerified"class="candidate-list-time order-1">NOT Verified</span>
+              </td>
+              <td>
+                <ul class="list-unstyled mb-0 d-flex justify-content-end">
+                  <li><a href="#" class="text-primary" data-toggle="tooltip" title="" data-original-title="view"><i class="far fa-eye"></i></a></li>
+                  <li><a href="#" class="text-info" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
+                  <li><a href="#" class="text-danger" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                </ul>
+              </td>
+            </tr>
+
+
+
+            </tbody>
+          </table>
+          <div class="text-center mt-3 mt-sm-3">
+            <ul class="pagination justify-content-center mb-0">
+              <li class="page-item disabled"> <span class="page-link">Prev</span> </li>
+              <li class="page-item active" aria-current="page"><span class="page-link">1 </span> <span class="sr-only">(current)</span></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">...</a></li>
+              <li class="page-item"><a class="page-link" href="#">25</a></li>
+              <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
+            </ul>
           </div>
         </div>
-        <div class="d-grid">
-          <div class="btn btn-primary">Need Help?</div>
-        </div>
       </div>
     </div>
-  </div> -->
-  <!-- [ sample-page ] end -->
+  </div>
 </div>
