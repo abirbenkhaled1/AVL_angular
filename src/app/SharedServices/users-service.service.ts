@@ -13,7 +13,9 @@ export class UsersService {
 
   getAllUsers(): Observable<any> {
 
-    this.Token =localStorage.getItem('token')
+    this.Token =localStorage.getItem('token');
+    console.log(this.Token);
+
 
 
     const params = new HttpParams().set('token', this.Token);

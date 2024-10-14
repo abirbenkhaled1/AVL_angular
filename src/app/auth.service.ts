@@ -11,10 +11,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(user: any): Observable<any> {
+    
     return this.http.post(`${this.baseUrl}/login`, user);
   }
 
   register(user: any): Observable<any> {
+    console.log("--------------------------------------------");
     return this.http.post(`${this.baseUrl}/register`, user);
   }
 }

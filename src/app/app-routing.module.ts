@@ -4,56 +4,56 @@ import { RouterModule, Routes } from '@angular/router';
 // Project imports
 import { AdminComponent } from './theme/layouts/admin-layout/admin-layout.component';
 import { GuestComponent } from './theme/layouts/guest/guest.component';
+
+// Importing Components
+import { DefaultComponent } from './demo/default/dashboard/dashboard.component';
+import TypographyComponent from './demo/ui-component/typography/typography.component';
+import UiColorComponent from './demo/ui-component/ui-color/ui-color.component';
+import SamplePageComponent from './demo/other/sample-page/sample-page.component';
 import { RegisterComponent } from './demo/authentication/register/register.component';
+import { LoginComponent } from './demo/authentication/login/login.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: RegisterComponent,
+    component: AdminComponent,
     children: [
       {
         path: '',
         redirectTo: '/register',
         pathMatch: 'full'
       },
-
       {
         path: 'dashboard/default',
-        loadComponent: () => import('./demo/default/dashboard/dashboard.component').then(c => c.DefaultComponent)
+        component: DefaultComponent 
       },
       {
         path: 'typography',
-        loadComponent: () => import('./demo/ui-component/typography/typography.component')
+        component: TypographyComponent 
       },
       {
         path: 'color',
-        loadComponent: () => import('./demo/ui-component/ui-color/ui-color.component')
+        component: UiColorComponent 
       },
       {
         path: 'sample-page',
-        loadComponent: () => import('./demo/other/sample-page/sample-page.component')
+        component: SamplePageComponent 
       },
       {
         path: 'register',
-        loadComponent: () => import('./demo/authentication/register/register.component').then(m => m.RegisterComponent)
+        component: RegisterComponent 
       },
       {
         path: 'login',
-        loadComponent: () => import('./demo/authentication/login/login.component').then(m => m.LoginComponent)
-      },
-
-
+        component: LoginComponent 
+      }
     ]
   },
   {
     path: '',
     component: GuestComponent,
     children: [
-      // {
-      //   path: 'login',
-      //   loadComponent: () => import('./demo/authentication/login/login.component')
-      // },
-
+      
     ]
   }
 ];
@@ -62,4 +62,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
