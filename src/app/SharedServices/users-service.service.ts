@@ -1,34 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  Token =''
-
+  private token = ''; // Store token here
   private baseUrl = 'http://localhost:8081/auth'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 
   getAllUsers(): Observable<any> {
+    this.token = localStorage.getItem('token') || ''; // Get token from local storage
+    console.log(this.token);
 
-    this.Token =localStorage.getItem('token');
-    console.log(this.Token);
-
-
-
-    const params = new HttpParams().set('token', this.Token);
+    const params = new HttpParams().set('token', this.token);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
-
-    // @ts-ignore
-    return this.http.get(`${this.baseUrl}/getUsers`, { headers: headers, params: params });
-
+    return this.http.get(`${this.baseUrl}/getUsers`, { headers, params });
   }
 
+  deleteUser(userId: string): Observable<any> {
+    const token = localStorage.getItem('token') || ''; // Get token from local storage
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Add Authorization header
+    });
 
-
+    return this.http.delete(`${this.baseUrl}/deleteUser/${userId}`, { headers }); // Assuming your delete endpoint requires the userId in the URL
+  }
 }
