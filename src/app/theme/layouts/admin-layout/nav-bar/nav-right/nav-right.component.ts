@@ -28,6 +28,7 @@ import {
   ArrowRightOutline,
   GithubOutline
 } from '@ant-design/icons-angular/icons';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-nav-right',
@@ -37,12 +38,13 @@ import {
   styleUrls: ['./nav-right.component.scss']
 })
 export class NavRightComponent {
+  
   @Input() styleSelectorToggle!: boolean;
   @Output() Customize = new EventEmitter();
   windowWidth: number;
   screenFull: boolean = true;
 
-  constructor(private iconService: IconService) {
+  constructor(private iconService: IconService,private authService: AuthService)  {
     this.windowWidth = window.innerWidth;
     this.iconService.addIcon(
       ...[
@@ -108,4 +110,7 @@ export class NavRightComponent {
       title: 'History'
     }
   ];
+  onLogout(): void {
+    this.authService.logout(); // Appel du service pour déconnecter l'utilisateur
+  }
 }

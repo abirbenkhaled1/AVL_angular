@@ -20,7 +20,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/register',
+        redirectTo: '/login', // Redirection vers la page login
         pathMatch: 'full'
       },
       {
@@ -38,23 +38,21 @@ const routes: Routes = [
       {
         path: 'sample-page',
         component: SamplePageComponent 
-      },
-      {
-        path: 'register',
-        component: RegisterComponent 
-      },
-      {
-        path: 'login',
-        component: LoginComponent 
       }
     ]
   },
   {
+    path: 'register',
+    component: RegisterComponent // Déplacer la route de register ici
+  },
+  {
+    path: 'login',
+    component: LoginComponent // Déplacer la route de login ici
+  },
+  {
     path: '',
     component: GuestComponent,
-    children: [
-      
-    ]
+    children: []
   }
 ];
 
